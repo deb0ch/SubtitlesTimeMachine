@@ -41,7 +41,8 @@ func addTimeToTime(time string, offsetMilli int) string {
 			m = 60 + m%60
 		}
 		if h < 0 {
-			h = 0
+			fmt.Println("Error: negative times. Please try a smaller offset.")
+			os.Exit(-1)
 		}
 	}
 	if h >= 100 {
