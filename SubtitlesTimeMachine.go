@@ -10,14 +10,10 @@ import (
 )
 
 func addTimeToTime(time string, offsetMilli int) string {
-	hh := time[0:2]
-	mm := time[3:5]
-	ss := time[6:8]
-	ms := time[9:12]
-	h, _ := strconv.Atoi(hh)
-	m, _ := strconv.Atoi(mm)
-	s, _ := strconv.Atoi(ss)
-	l, _ := strconv.Atoi(ms)
+	h, _ := strconv.Atoi(time[0:2])
+	m, _ := strconv.Atoi(time[3:5])
+	s, _ := strconv.Atoi(time[6:8])
+	l, _ := strconv.Atoi(time[9:12])
 	if offsetMilli > 0 {
 		l += offsetMilli
 		s += l / 1000
@@ -54,11 +50,9 @@ func addTimeToTime(time string, offsetMilli int) string {
 func addTimeToLine(line string, offsetMilli int) string {
 	time1 := line[0:12]
 	time2 := line[17:29]
-
 	res := addTimeToTime(time1, offsetMilli)
 	res += " --> "
 	res += addTimeToTime(time2, offsetMilli) + line[29:] + "\r\n"
-
 	return res
 }
 
